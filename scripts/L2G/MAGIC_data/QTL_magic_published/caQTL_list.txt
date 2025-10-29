@@ -1,0 +1,5 @@
+caQTL_Brain	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/caQTL_Brain	FALSE
+caQTL_Blood	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/caQTL_Blood	FALSE
+caQTL_Neuro	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/caQTL_Neuro	TRUE
+caQTL_Glia	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/caQTL_Glia	TRUE
+caQTL_Microglia	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/caQTL_Microglia	TRUE

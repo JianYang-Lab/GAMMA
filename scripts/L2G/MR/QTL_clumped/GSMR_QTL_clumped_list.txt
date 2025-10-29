@@ -1,0 +1,6 @@
+pQTL_deCODE	/storage/yangjianLab/guoyazhou/new/pQTL_data/QTL_clumping/total/pQTL_deCODE_clumped.cojo
+pQTL_DIRECT	/storage/yangjianLab/guoyazhou/new/pQTL_data/QTL_clumping/total/pQTL_DIRECT_clumped.cojo
+pQTL_INTERVAL	/storage/yangjianLab/guoyazhou/new/pQTL_data/QTL_clumping/total/pQTL_INTERVAL_clumped.cojo
+pQTL_NIAGADS	/storage/yangjianLab/guoyazhou/new/pQTL_data/QTL_clumping/total/pQTL_NIAGADS_clumped.cojo
+pQTL_SCALLOP	/storage/yangjianLab/guoyazhou/new/pQTL_data/QTL_clumping/total/pQTL_SCALLOP_clumped.cojo
+pQTL_UKB	/storage/yangjianLab/guoyazhou/new/pQTL_data/QTL_clumping/total/pQTL_UKB_clumped.cojo

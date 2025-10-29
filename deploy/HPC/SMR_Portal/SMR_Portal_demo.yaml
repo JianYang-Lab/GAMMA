@@ -1,0 +1,55 @@
+# Input
+input:
+  trait: "T2D"
+  gwas_raw: "/storage/yangjianLab/sharedata/GWAS_summary/01_Public/01_cojo/DIAMANTE_EUR_T2D_2022_NG.txt"
+  gwas: "/storage/yangjianLab/sharedata/GWAS_summary/01_Public/01_cojo/DIAMANTE_EUR_T2D_2022_NG.txt"
+  output: "/storage/yangjianLab/guoyazhou/GAMMA_git_data"
+script:
+  work_path: "/storage/yangjianLab/guoyazhou/GAMMA_git"
+  path: "/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts"
+yaml:
+  template: "/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/template.yaml"
+  config: "/storage/yangjianLab/guoyazhou/GAMMA_git/yaml_file/T2D.yaml"
+# Not changed ---- :
+environment:
+  R_421: "Drugsets_py385"
+  python_pops: "pops"
+  python_depict: "depict"
+  python_rwr_ppr: "NetworkX"
+  python_ldsc: "ldsc"
+  post_smr: "/storage/yangjianLab/chenwenhao/Software/micromamba/envs/torch_v2"
+software:
+  plink1_9: "/storage/yangjianLab/guoyazhou/software/plink/plink1.90beta/plink_1.90_beta"
+  plink2: "/storage/yangjianLab/guoyazhou/software/plink/plink2.00alpha/plink2"
+  gcta: "/storage/yangjianLab/guoyazhou/software/gcta/gcta-1.94.1-linux-kernel-3-x86_64/gcta-1.94.1"
+  smr: "/storage/yangjianLab/guoyazhou/software/SMR/smr_new/smr-1.4.0-linux-x86_64/smr"
+  fusion: "/storage/yangjianLab/guoyazhou/software/FUSION/fusion_twas-master/FUSION.assoc_test.R"
+  coloc: "/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/COLOC.R"
+  magma: "/storage/yangjianLab/guoyazhou/software/MAGMA/magma"
+  pops: "/storage/yangjianLab/guoyazhou/software/PoPS/pops-master/pops.py"
+  depict: "/storage/yangjianLab/guoyazhou/software/DEPICT/src/python/depict.py"
+  bedtools: "/storage/yangjianLab/guoyazhou/anaconda3/bin/bedtools"
+  R_functions: "/storage/yangjianLab/guoyazhou/software/CommonFunc.r"
+reference:
+  reference_bfile: "/storage/yangjianLab/guoyazhou/data/Reference/UKB_Reference_genotype/genotype_10k_hg38/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38"
+  reference_all_bim: "/storage/yangjianLab/sharedata/LD_reference/UKB/genotype_10K/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38_chrALL.bim"
+  reference_bld: "/storage/yangjianLab/guoyazhou/project_SMR_visualizaiton/script/test_script/run_time_test/bld_format/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38_4Mb"
+  reference_bfile_GRCh37: "/storage/yangjianLab/sharedata/LD_reference/UKB/genotype_10K/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K"
+  reference_freq: "/storage/yangjianLab/sharedata/LD_reference/UKB/genotype_10K/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38.frq"
+gene:
+  gencode: "/storage/yangjianLab/qiting/data/annotation/gencode/gencode.v40.GRCh38.gene.annotation.bed"
+  gencode_tss: "/storage/yangjianLab/qiting/data/Variant2Gene/TSS/gencode.v40.TSS.GRCh38.bed"
+  gamma_gene: "/storage/yangjianLab/guoyazhou/GAMMA_git/GENCODE/GAMMA_gene_list.txt"
+smr:
+  QTL_list: "/storage/yangjianLab/guoyazhou/GAMMA_git/L2G/QTL_data/QTL_list.txt"
+  eQTL_list: "/storage/yangjianLab/guoyazhou/GAMMA_git/L2G/QTL_data/eQTL_list.txt"
+  sQTL_list: "/storage/yangjianLab/guoyazhou/GAMMA_git/L2G/QTL_data/sQTL_list.txt"
+  pQTL_list: "/storage/yangjianLab/guoyazhou/GAMMA_git/L2G/QTL_data/pQTL_list.txt"
+  mQTL_list: "/storage/yangjianLab/guoyazhou/GAMMA_git/L2G/QTL_data/mQTL_list.txt"
+magic:
+  QTL_list: "/storage/yangjianLab/guoyazhou/GAMMA_github/MAGIC/data/QTL_data/QTL_list.txt"
+  QTL_list_lite: "/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/QTL_list_lite.txt"
+  R_functions: "/storage/yangjianLab/guoyazhou/GAMMA_github/MAGIC/scripts/R_functions/magic_functions.r"
+  CpG_link: "/storage/yangjianLab/qiting/SMR_Cauchy/link/consensus/CpG_consensus4.link"
+  hQTL_link: "/storage/yangjianLab/qiting/SMR_Cauchy/link/consensus/hQTL_consensus4.link"
+  caQTL_link: "/storage/yangjianLab/qiting/SMR_Cauchy/link/consensus/caQTL_consensus4.link"

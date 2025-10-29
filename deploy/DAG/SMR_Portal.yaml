@@ -1,0 +1,69 @@
+# Input
+input:
+  trait: "T2D"
+  gwas_raw: "/opt/workflow/data/sharedata/GWAS_summary/01_Public/01_cojo/DIAMANTE_EUR_T2D_2022_NG.txt"
+  gwas: "/opt/workflow/data/sharedata/GWAS_summary/01_Public/01_cojo/DIAMANTE_EUR_T2D_2022_NG.txt"
+  output: "/opt/workflow/data/guoyazhou/GAMMA_git_data"
+script:
+  work_path: "/opt/workflow/data/guoyazhou/GAMMA_git"
+  path: "/opt/workflow/data/guoyazhou/GAMMA_github/gamma-script/scripts"
+yaml:
+  template: "/opt/workflow/data/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/template.yaml"
+  config: "/opt/workflow/data/guoyazhou/GAMMA_git/yaml_file/T2D.yaml"
+# Not changed ---- :
+environment:
+  R_421: "r"
+  python_pops: "pops"
+  python_depict: "depict"
+  python_rwr_ppr: "NetworkX"
+  python_ldsc: "ldsc"
+  post_smr: "py37"
+software:
+  plink1_9: "/opt/workflow/data/guoyazhou/software/plink/plink1.90beta/plink_1.90_beta"
+  plink2: "/opt/workflow/data/guoyazhou/software/plink/plink2.00alpha/plink2"
+  gcta: "/opt/workflow/data/guoyazhou/software/gcta/gcta-1.94.1-linux-kernel-3-x86_64/gcta-1.94.1"
+  smr: "/opt/workflow/data/yangwen/alpha-software/smr/smr-1.3.2-alpha3-linux"
+  fusion: "/opt/workflow/data/guoyazhou/software/FUSION/fusion_twas-master/FUSION.assoc_test.R"
+  coloc: "/opt/workflow/data/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/COLOC.R"
+  magma: "/opt/workflow/data/guoyazhou/software/MAGMA/magma"
+  pops: "/opt/workflow/data/guoyazhou/software/PoPS/pops-master/pops.py"
+  depict: "/opt/workflow/data/guoyazhou/software/DEPICT/src/python/depict.py"
+  bedtools: "/opt/workflow/data/guoyazhou/anaconda3/bin/bedtools"
+  R_functions: "/opt/workflow/data/guoyazhou/software/CommonFunc.r"
+reference:
+  reference_bfile: "/opt/workflow/data/guoyazhou/data/Reference/UKB_Reference_genotype/genotype_10k_hg38/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38"
+  reference_all_bim: "/opt/workflow/data/sharedata/LD_reference/UKB/genotype_10K/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38_chrALL.bim"
+  # reference_bld: "/opt/workflow/data/guoyazhou/project_SMR_visualizaiton/script/test_script/run_time_test/bld_format/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38_4Mb"
+  reference_bld: "/opt/workflow/cache/smr/bld_format/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38_4Mb"
+  reference_bfile_GRCh37: "/opt/workflow/data/sharedata/LD_reference/UKB/genotype_10K/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K"
+  reference_freq: "/opt/workflow/data/sharedata/LD_reference/UKB/genotype_10K/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38.frq"
+gene:
+  gencode: "/opt/workflow/data/qiting/data/annotation/gencode/gencode.v40.GRCh38.gene.annotation.bed"
+  gencode_tss: "/opt/workflow/data/qiting/data/Variant2Gene/TSS/gencode.v40.TSS.GRCh38.bed"
+  gamma_gene: "/opt/workflow/data/guoyazhou/GAMMA_git/GENCODE/GAMMA_gene_list.txt"
+smr:
+  maf: 0.01
+  peqtl_smr: 5.0e-8
+  peqtl_heidi: 1.57e-3
+  batch_num: 3
+  smr_multi_index: TRUE
+  heidi_index: TRUE
+  QTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/QTL_list.txt"
+  eQTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/eQTL_list.txt"
+  sQTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/sQTL_list.txt"
+  pQTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/pQTL_list.txt"
+  mQTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/mQTL_list.txt"
+mr:
+  enable: True
+  MR_snp_min: 3
+  QTL_clumped_list: "/opt/workflow/data/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MR/QTL_clumped/QTL_clumped_list.txt"
+  batch_num: 5
+magic:
+  run_magic_index: FALSE
+  smr_multi_index: FALSE
+  heidi_index: FALSE
+  QTL_list: "/opt/workflow/data/guoyazhou/GAMMA_github/MAGIC/data/QTL_data/QTL_list.txt"
+  R_functions: "/opt/workflow/data/guoyazhou/GAMMA_github/MAGIC/scripts/R_functions/magic_functions.r"
+  CpG_link: "/opt/workflow/data/qiting/SMR_Cauchy/link/consensus/CpG_consensus4.link"
+  hQTL_link: "/opt/workflow/data/qiting/SMR_Cauchy/link/consensus/hQTL_consensus4.link"
+  caQTL_link: "/opt/workflow/data/qiting/SMR_Cauchy/link/consensus/caQTL_consensus4.link"

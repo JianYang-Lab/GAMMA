@@ -1,0 +1,15 @@
+mQTL_GoDMC	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GoDMC	TRUE
+mQTL_BrainMeta	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_BrainMeta	FALSE
+mQTL_GTEx_Breast_Mammary_Tissue	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GTEx_Breast_Mammary_Tissue	TRUE
+mQTL_GTEx_Kidney_Cortex	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GTEx_Kidney_Cortex	TRUE
+mQTL_GTEx_Muscle_Skeletal	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GTEx_Muscle_Skeletal	TRUE
+mQTL_GTEx_Prostate	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GTEx_Prostate	TRUE
+mQTL_GTEx_Whole_Blood	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GTEx_Whole_Blood	TRUE
+mQTL_GTEx_Colon_Transverse	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GTEx_Colon_Transverse	TRUE
+mQTL_GTEx_Lung	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GTEx_Lung	TRUE
+mQTL_GTEx_Ovary	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GTEx_Ovary	TRUE
+mQTL_GTEx_Testis	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_GTEx_Testis	TRUE
+
+
+
+mQTL_McRae	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/mQTL_McRae	TRUE

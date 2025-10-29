@@ -1,0 +1,18 @@
+pQTL_INTERVAL	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_INTERVAL	TRUE
+pQTL_SCALLOP	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_SCALLOP	FALSE
+pQTL_DIRECT	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_DIRECT	FALSE
+pQTL_deCODE	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_deCODE	FALSE
+pQTL_NIAGADS_CSF	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_NIAGADS_CSF	FALSE
+pQTL_NIAGADS_DLPFC	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_NIAGADS_DLPFC	FALSE
+pQTL_NIAGADS_plasma	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_NIAGADS_plasma	FALSE
+pQTL_Banner	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_Banner	FALSE
+pQTL_ROSMAP	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_ROSMAP	FALSE
+pQTL_FHS	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_FHS	FALSE
+pQTL_FENLAND	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_FENLAND	FALSE
+pQTL_ARIC	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_ARIC	FALSE
+pQTL_UKB	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_UKB	TRUE
+pQTL_AGES	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_AGES	TRUE
+
+
+pQTL_3brain	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_3brain	FALSE
+pQTL_6plasma	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/pQTL_6plasma	TRUE

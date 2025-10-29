@@ -1,0 +1,7 @@
+hQTL_H3K9ac_ROSMAP	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/hQTL_H3K9ac_ROSMAP	TRUE
+hQTL_H3K27ac_BLUEPRINT	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/hQTL_H3K27ac_BLUEPRINT	FALSE
+hQTL_H3K4me1_BLUEPRINT	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/hQTL_H3K4me1_BLUEPRINT	FALSE
+hQTL_H3K27ac_GTEx_Heart	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/hQTL_H3K27ac_GTEx_Heart	FALSE
+hQTL_H3K27ac_GTEx_Brain	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/hQTL_H3K27ac_GTEx_Brain	FALSE
+hQTL_H3K27ac_GTEx_Lung	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/hQTL_H3K27ac_GTEx_Lung	FALSE
+hQTL_H3K27ac_GTEx_Muscle	/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/MAGIC_data/QTL_lite_besd/besd/hQTL_H3K27ac_GTEx_Muscle	FALSE

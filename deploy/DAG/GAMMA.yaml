@@ -1,0 +1,138 @@
+# Input
+input:
+  trait: "T2D"
+  gwas: "/opt/workflow/data/sharedata/GWAS_summary/01_Public/01_cojo/DIAMANTE_EUR_T2D_2022_NG.txt"
+  output: "/opt/workflow/data/guoyazhou/GAMMA_git_data"
+  report_dir: ""
+
+# Not changed ---- :
+environment:
+  R_421: "r"
+  python_pops: "pops"
+  python_depict: "depict"
+  python_rwr_ppr: "NetworkX"
+  python_ldsc: "ldsc"
+  post_smr: "depict"
+  python_ml: "py39"
+  
+script:
+  work_path: "/opt/workflow/logs"
+  path: "/opt/workflow/scripts/GAMMA_0.1.1/scripts"
+
+software:
+  plink1_9: "/opt/workflow/data/guoyazhou/software/plink/plink1.90beta/plink_1.90_beta"
+  plink2: "/opt/workflow/data/guoyazhou/software/plink/plink2.00alpha/plink2"
+  gcta: "/opt/workflow/data/guoyazhou/software/gcta/gcta-1.94.1-linux-kernel-3-x86_64/gcta-1.94.1"
+  smr: "/opt/workflow/data/yangwen/alpha-software/smr/smr-1.3.2-alpha7-linux"
+  fusion: "/opt/workflow/data/guoyazhou/software/FUSION/fusion_twas-master/FUSION.assoc_test.R"
+  coloc: "/opt/workflow/scripts/GAMMA_0.1.1/scripts/L2G/COLOC.R"
+  magma: "/opt/workflow/data/guoyazhou/software/MAGMA/magma"
+  pops: "/opt/workflow/data/guoyazhou/software/PoPS/pops-master/pops.py"
+  depict: "/opt/workflow/data/guoyazhou/software/DEPICT/src/python/depict.py"
+  bedtools: "/usr/local/miniconda/envs/ldsc/bin/bedtools"
+  R_functions: "/opt/workflow/data/guoyazhou/software/CommonFunc.r"
+
+reference:
+  reference_bfile: "/opt/workflow/data/guoyazhou/data/Reference/UKB_Reference_genotype/genotype_10k_hg38/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38"
+  reference_all_bim: "/opt/workflow/data/sharedata/LD_reference/UKB/genotype_10K/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38_chrALL.bim"
+  # reference_bld: "/opt/workflow/data/guoyazhou/project_SMR_visualizaiton/script/test_script/run_time_test/bld_format/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38_4Mb"
+  reference_bld: "/opt/workflow/cache/smr/bld_format/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38_4Mb"
+  reference_bfile_GRCh37: "/opt/workflow/data/sharedata/LD_reference/UKB/genotype_10K/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K"
+  reference_freq: "/opt/workflow/data/sharedata/LD_reference/UKB/genotype_10K/BED_ukbEUR_imp_v3_INFO0.8_maf0.01_mind0.05_geno0.05_hwe1e6_10K_hg38.frq"
+
+gene:
+  gencode: "/opt/workflow/data/qiting/data/annotation/gencode/gencode.v40.GRCh38.gene.annotation.bed"
+  gencode_tss: "/opt/workflow/data/qiting/data/Variant2Gene/TSS/gencode.v40.TSS.GRCh38.bed"
+  gamma_gene: "/opt/workflow/data/guoyazhou/GAMMA_git/GENCODE/GAMMA_gene_list.txt"
+  
+magma:
+  gene_annot: "/opt/workflow/data/guoyazhou/GAMMA_git_data/MAGMA/annotation/genes_GRCh37.genes.annot"
+
+mBAT:
+  gene_list: "/opt/workflow/data/guoyazhou/project_new/project_GWAS_to_Gene/mBAT_analysis/script/mBAT_gene_list/glist_ensgid_hg38_v40.txt"
+
+v2g:
+  Exon_bed: "/opt/workflow/data/qiting/data/Variant2Gene/Exon/gencode.v40.GRCh38.exon.bed"
+  ABC_bed: "/opt/workflow/data/qiting/data/Variant2Gene/Enhancer-Gene-Linking/ABC/ABC0.015_GRCh38_CHRALL.bed"
+  EpiMap_bed: "/opt/workflow/data/qiting/data/Variant2Gene/Enhancer-Gene-Linking/EpiMapLinks/EpiMap_links_by_group.ALL.CHRALL_GRCh38.bed"
+  RoadMap_bed: "/opt/workflow/data/qiting/data/Variant2Gene/Enhancer-Gene-Linking/RoadmapLinks/Roadmap_links_GRCh38.bed"
+  PCHiC_bed: "/opt/workflow/data/qiting/data/Variant2Gene/PCHi-C/PCHiC_Combined_GRCh38.bed"
+
+l2g:
+  # new
+  L2G_column_file: "/opt/workflow/data/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/L2G_column.r"
+  QTL_name_mapping_file: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/L2G_QTL_name_mapping.txt"
+  gsmr_pQTL_file: "/opt/workflow/data/guoyazhou/GAMMA_git_data/GSMR/data/gsmr_pQTL.txt"
+  pQTL_epi_file: "/opt/workflow/data/sharedata/molecular_QTL/pQTL/freeze1/merged_pQTL_plasma/merged_pQTL_plasma_5pQTL.epi"
+
+smr:
+  maf: 0.01
+  peqtl_smr: 5.0e-8
+  peqtl_heidi: 1.57e-3
+  batch_num: 3
+  QTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/QTL_list.txt"
+  eQTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/eQTL_list.txt"
+  sQTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/sQTL_list.txt"
+  pQTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/pQTL_list.txt"
+  mQTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/mQTL_list.txt"
+
+mr:
+  batch_num: 10
+  MR_snp_min: 3
+  # new
+  QTL_clumped_list: "/opt/workflow/scripts/GAMMA_0.1.2/scripts/L2G/MR/QTL_clumped/QTL_clumped_list.txt"
+  GSMR_QTL_clumped_list: "/opt/workflow/scripts/GAMMA_0.1.2/scripts/L2G/MR/QTL_clumped/GSMR_QTL_clumped_list.txt"
+
+magic:
+  QTL_list: "/opt/workflow/scripts/GAMMA_0.1.2/scripts/L2G/MAGIC_data/QTL_data/QTL_list.txt"
+  QTL_name_list: "/opt/workflow/scripts/GAMMA_0.1.2/scripts/L2G/MAGIC_data/QTL_data/QTL_data_name_list.txt"
+  R_functions: "/opt/workflow/scripts/GAMMA_0.1.2/scripts/L2G/magic_functions.r"
+  CpG_link: "/opt/workflow/data/qiting/SMR_Cauchy/link/consensus3/CpG_consensus3.link"
+  hQTL_link: "/opt/workflow/data/qiting/SMR_Cauchy/link/consensus3/hQTL_consensus3.link"
+  caQTL_link: "/opt/workflow/data/qiting/SMR_Cauchy/link/consensus3/caQTL_consensus3.link"
+
+clumping:
+  field: P
+
+fusion:
+  munge_sumstats: "/opt/workflow/data/guoyazhou/software/LDSC/ldsc/munge_sumstats.py"
+  ldsc_resources_dir: "/opt/workflow/data/sharedata/LDSC_resource"
+  LDREF: "/opt/workflow/data/guoyazhou/software/FUSION/fusion_twas-master/LDREF"
+  QTL_list: "/opt/workflow/data/guoyazhou/GAMMA_git/L2G/QTL_data/FUSION_QTL_name.txt"
+
+coloc:
+  QTL_dir: "/opt/workflow/data/guoyazhou/software/COLOC/data"
+
+gsmr:
+  reffile: "/opt/workflow/data/guoyazhou/GAMMA_git_data/GSMR/data/gsmr_ref_data_ukb.txt"
+  expofile: "/opt/workflow/data/guoyazhou/GAMMA_git_data/GSMR/data/gsmr_pQTL.txt"
+  expo_dir: "/opt/workflow/data/guoyazhou/GAMMA_git_data/GSMR/exposure_data"
+
+pops:
+  gene_annot: "/opt/workflow/data/guoyazhou/software/PoPS/pops-master/example/data/utils/gene_annot_jun10.txt"
+  pops_feature: "/opt/workflow/data/guoyazhou/software/PoPS/pops-master/pops_all_features_munged/all_pops_features"
+  control_feature: "/opt/workflow/data/guoyazhou/software/PoPS/pops-master/example/data/utils/features_jul17_control.txt"
+
+depict:
+  snp_loc_GRCh37: "/opt/workflow/data/guoyazhou/software/DEPICT/snp_loc_b37"
+  cfg_demo: "/opt/workflow/data/guoyazhou/GAMMA_git_data/DEPICT/cfg/demo.cfg"
+
+rwr_ppr:
+  ppi_file: "/opt/workflow/data/sharedata/Network_data/PPI/PPI_all.csv"
+
+gamma:
+  pharmaprojects: "/opt/workflow/data/guoyazhou/GAMMA_git/clinical_success_rate/Pharmaprojects_Nelson_2022.txt"
+  pharmaprojects_0507_shufeng: "/opt/workflow/data/sunshufeng/gamma_v4/data/pharmap_processed.csv"
+
+mesh:
+  gwas_mesh: "/opt/workflow/data/guoyazhou/data/Drug_data/Pharmaprojects/Pharmaprojects_2023_10_15/ontology_similarity/similarity_matrix/GWAS_trait_list.csv"
+
+model_data:
+  omim: "/opt/workflow/data/sunshufeng/gamma_v4/data/OMIM_processed.csv"
+  clinvar: "/opt/workflow/data/sunshufeng/gamma_v4/data/clinvar.csv"
+  mgi: "/opt/workflow/data/sunshufeng/gamma_v4/data/MGI_processed.csv"
+  gene_features: "/opt/workflow/data/sunshufeng/gamma_v4/0.0.3_gene_features.csv"
+
+model_model:
+  model: "/opt/workflow/data/sunshufeng/gamma_v4/0.0.1_valid_feature_model.joblib"
+  feature: "/opt/workflow/data/sunshufeng/gamma_v4/0.0.2_feature_list.txt"
