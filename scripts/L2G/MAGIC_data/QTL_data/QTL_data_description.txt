@@ -1,8 +1,0 @@
-QTL_type	num
-eQTL	284
-sQTL	53
-pQTL	6
-edQTL	49
-mQTL	11
-caQTL	5
-hQTL	7

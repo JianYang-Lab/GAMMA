@@ -34,14 +34,14 @@ source activate $env
 # if input is COJO:
 
 # COJO_or_Clumping_file="${OUTPUT}/Clumping/summary/${trait_name}.clumped"
-COJO_or_Clumping_file="${OUTPUT}/COJO/summary/${trait_name}.jma.cojo"
-
+# COJO_or_Clumping_file="${OUTPUT}/COJO/summary/${trait_name}.jma.cojo"
+locus_path="${OUTPUT}/Clumping/summary/${trait_name}.locus"
 
 Rscript ${SCRIPT_DIR}/V2G/Wu_adj.R \
 	${GWAS_DATA} \
 	${trait_name} \
 	${OUTPUT} \
-	${COJO_or_Clumping_file} \
+	${locus_path} \
 	${plink1_9} \
 	${reference_all_bim} \
 	${reference_freq} \

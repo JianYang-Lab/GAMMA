@@ -7,6 +7,7 @@ WORK_DIR=${4:-"/storage/yangjianLab/guoyazhou/GAMMA_git"}
 OUTPUT=${5:-"/storage/yangjianLab/guoyazhou/GAMMA_git_data"}
 SCRIPT_DIR=${6:-"/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts"}
 report_dir=$7
+MESH_ID=$8
 
 mkdir -p ${OUTPUT}/GWAS/COJO_format
 COJO_file=${OUTPUT}/GWAS/COJO_format/${trait_name}.txt
@@ -22,6 +23,7 @@ yq -i ".input.trait = \"$trait_name\"" "$CONFIG"
 yq -i ".input.gwas_raw = \"$GWAS_DATA\"" "$CONFIG"
 yq -i ".input.gwas = \"$COJO_file\"" "$CONFIG"
 yq -i ".input.output = \"$OUTPUT\"" "$CONFIG"
+yq -i ".input.mesh_id = \"$MESH_ID\"" "$CONFIG"
 
 yq -i ".script.work_path = \"$WORK_DIR\"" "$CONFIG"
 yq -i ".script.path = \"$SCRIPT_DIR\"" "$CONFIG"

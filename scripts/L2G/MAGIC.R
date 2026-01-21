@@ -278,5 +278,7 @@ colnames(MAGIC_results) = c("chr", "start", "end", "strand", "gene_id", "gene_na
                             "eMAGIC_QTL_name", "sMAGIC_QTL_name", "pMAGIC_QTL_name", "edMAGIC_QTL_name","mMAGIC_QTL_name", "hMAGIC_QTL_name", "caMAGIC_QTL_name",
                             "eMAGIC_probeID", "sMAGIC_probeID", "pMAGIC_probeID", "edMAGIC_probeID","mMAGIC_probeID", "hMAGIC_probeID", "caMAGIC_probeID")
 
+MAGIC_results=MAGIC_results[which(!is.na(MAGIC_results$MAGIC)),]
+MAGIC_results=MAGIC_results[order(MAGIC_results$MAGIC), ]
 
 write.table(MAGIC_results,paste0(OUTPUT,"/MAGIC/summary/",trait_name,"_MAGIC.txt"),row=F,col=T,quo=F,sep="\t")

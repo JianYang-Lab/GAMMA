@@ -23,7 +23,7 @@ software:
   plink1_9: "/storage/yangjianLab/guoyazhou/software/plink/plink1.90beta/plink_1.90_beta"
   plink2: "/storage/yangjianLab/guoyazhou/software/plink/plink2.00alpha/plink2"
   gcta: "/storage/yangjianLab/guoyazhou/software/gcta/gcta-1.94.1-linux-kernel-3-x86_64/gcta-1.94.1"
-  smr: "/storage/yangjianLab/guoyazhou/software/SMR/smr_new/smr-1.4.0-linux-x86_64/smr"
+  smr: "/storage/yangjianLab/yangwen/alpha-software/smr/smr-1.3.2-alpha7-linux"
   fusion: "/storage/yangjianLab/guoyazhou/software/FUSION/fusion_twas-master/FUSION.assoc_test.R"
   coloc: "/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts/L2G/COLOC.R"
   magma: "/storage/yangjianLab/guoyazhou/software/MAGMA/magma"

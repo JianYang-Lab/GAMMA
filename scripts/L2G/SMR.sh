@@ -51,6 +51,7 @@ if [[ -z "$peqtl_heidi" || "$peqtl_heidi" == "null" ]]; then
     peqtl_heidi=$default_peqtl_heidi
 fi
 
+
 # ------------------------------------------------------------------------
 # run MAGIC Portal or SMR Portal analysis
 run_magic_index=`yq .magic.run_magic_index "${CONFIG}"`
@@ -112,16 +113,29 @@ for i in $(seq 1 22); do
         QTL_data="${qtl_data}"
     fi
 
-    
-    cmd="${SMR} --bfile ${REFERENCE}_chr${i} \
-        --gwas-summary ${GWAS_DATA} \
-        --beqtl-summary ${QTL_data} \
-        --probe-chr ${i} \
-        --maf ${maf} \
-        --peqtl-smr ${peqtl_smr} \
-        --peqtl-heidi ${peqtl_heidi} \
-        --thread-num 4 \
-        --out ${OUTPUT}/SMR/detail/${trait_name}_${qtl_name}_chr${i}"
+    if [ "$run_magic_index" = "TRUE" ]; then
+        # MAGIC 模式使用 --bld 参数
+        cmd="${SMR} --bld ${REFERENCE_bld}_chr${i} \
+            --gwas-summary ${GWAS_DATA} \
+            --beqtl-summary ${QTL_data} \
+            --probe-chr ${i} \
+            --maf ${maf} \
+            --peqtl-smr ${peqtl_smr} \
+            --peqtl-heidi ${peqtl_heidi} \
+            --thread-num 4 \
+            --out ${OUTPUT}/SMR/detail/${trait_name}_${qtl_name}_chr${i}"
+    else
+        # SMR 模式使用 --bfile 参数
+        cmd="${SMR} --bfile ${REFERENCE}_chr${i} \
+            --gwas-summary ${GWAS_DATA} \
+            --beqtl-summary ${QTL_data} \
+            --probe-chr ${i} \
+            --maf ${maf} \
+            --peqtl-smr ${peqtl_smr} \
+            --peqtl-heidi ${peqtl_heidi} \
+            --thread-num 4 \
+            --out ${OUTPUT}/SMR/detail/${trait_name}_${qtl_name}_chr${i}"
+    fi
 
     if [ "$smr_multi_index" = "TRUE" ]; then
         cmd="${cmd} --smr-multi"
@@ -130,7 +144,7 @@ for i in $(seq 1 22); do
     if [ "$smr_heidi_index" = "FALSE" ]; then
         cmd="${cmd} --heidi-off"
     fi
-    
+
     echo "Executing command:"
     echo "$cmd"
     $cmd &
@@ -151,9 +165,14 @@ for pid in "${pids[@]}"; do
 done
 
 
-# No matter smr or smr-multi, we will final output the "_chrALL.msmr" file 
-awk 'NR==1 || FNR>1' ${OUTPUT}/SMR/detail/${trait_name}_${qtl_name}_chr*smr > ${OUTPUT}/SMR/summary/${trait_name}_${qtl_name}_chrALL.msmr
-rm ${OUTPUT}/SMR/detail/${trait_name}_${qtl_name}_chr*
+# No matter smr or smr-multi, we will final output the "_chrALL.msmr" file
+smr_detail_files=(${OUTPUT}/SMR/detail/${trait_name}_${qtl_name}_chr*smr)
+if [ -e "${smr_detail_files[0]}" ]; then
+    awk 'NR==1 || FNR>1' ${OUTPUT}/SMR/detail/${trait_name}_${qtl_name}_chr*smr > ${OUTPUT}/SMR/summary/${trait_name}_${qtl_name}_chrALL.msmr
+    rm ${OUTPUT}/SMR/detail/${trait_name}_${qtl_name}_chr*
+else
+    touch ${OUTPUT}/SMR/summary/${trait_name}_${qtl_name}_chrALL.msmr
+fi
 
 else
     echo "File already exists."

@@ -29,7 +29,7 @@ result=fread(gamma_gene_file)
 result$GWAS_LOCUS=NA;result$Lead_SNP=NA;result$Lead_SNP_BP=NA;
 # 1. COJO locus -----------------------------------------------------
 # print("cojo test-----")
-COJO_locus=fread(paste0(OUTPUT, "/COJO/summary/",trait_name,".locus"), header=T)
+COJO_locus=fread(paste0(OUTPUT, "/Clumping/summary/",trait_name,".locus"), header=T)
 for(j in 1:nrow(COJO_locus)){
   chr=as.numeric(gsub("chr","",COJO_locus$chr[j]))
   start=COJO_locus$start[j]
@@ -110,6 +110,14 @@ print("----------")
 ## ********************************************************************************************
 
 GAMMA_V2G=fread(paste0(OUTPUT,"/V2G/score/",trait_name,"_GAMMA_V2G.summary"))
+GAMMA_V2G$GAMMA_ClosestTSS=GAMMA_V2G$ClosestTSS
+GAMMA_V2G$GAMMA_Exon=GAMMA_V2G$Exon
+GAMMA_V2G$GAMMA_ABC=GAMMA_V2G$ABC
+GAMMA_V2G$GAMMA_EpiMap=GAMMA_V2G$EpiMap
+GAMMA_V2G$GAMMA_RoadMap=GAMMA_V2G$RoadMap
+GAMMA_V2G$GAMMA_PCHiC=GAMMA_V2G$PCHiC
+
+
 GAMMA_xQTL=fread(paste0(OUTPUT,"/L2G/score/",trait_name,"_GAMMA_xQTL.summary"))
 GAMMA_Network=fread(paste0(OUTPUT,"/Network/score/",trait_name,"_GAMMA_Network.summary"))
 
@@ -146,7 +154,11 @@ GAMMA=GAMMA[,c("Gene_ID","gene_id","gene_name","chr","start","end","strand","GWA
 					"eSMR_QTL_name","sSMR_QTL_name","pSMR_QTL_name", "eCOLOC_QTL_name", "sCOLOC_QTL_name", "pCOLOC_QTL_name","FUSION_QTL_name","eMAGIC_QTL_name", "sMAGIC_QTL_name", "pMAGIC_QTL_name", "mMAGIC_QTL_name", "hMAGIC_QTL_name", "caMAGIC_QTL_name",
 					"eSMR_p_HEIDI","sSMR_p_HEIDI","pSMR_p_HEIDI","eSMR_probeID","sSMR_probeID","pSMR_probeID","eCOLOC_probeID","sCOLOC_probeID","pCOLOC_probeID","FUSION_probeID","eMAGIC_probeID", "sMAGIC_probeID", "pMAGIC_probeID", "mMAGIC_probeID", "hMAGIC_probeID", "caMAGIC_probeID",
 					#### GAMMA GWAS information
-					"GAMMA_MAGMA","GAMMA_mBATcombo","z_MAGMA",
+					"GAMMA_MAGMA","GAMMA_mBATcombo",
+					#### GAMMA V2G information	
+					"GAMMA_ClosestTSS","GAMMA_Exon","GAMMA_ABC","GAMMA_EpiMap","GAMMA_RoadMap","GAMMA_PCHiC",
+					#### GAMMA L2G (xQTL) inforamtion
+					"GAMMA_eSMR","GAMMA_sSMR","GAMMA_pSMR","GAMMA_eCOLOC","GAMMA_sCOLOC","GAMMA_pCOLOC","GAMMA_FUSION","GAMMA_GSMR", "GAMMA_MAGIC","GAMMA_eMAGIC", "GAMMA_sMAGIC", "GAMMA_pMAGIC", "GAMMA_mMAGIC", "GAMMA_hMAGIC", "GAMMA_caMAGIC",
 					#### GAMMA Network information
 					"GAMMA_PoPS","GAMMA_DEPICT","GAMMA_RWR","GAMMA_PPR")]
 

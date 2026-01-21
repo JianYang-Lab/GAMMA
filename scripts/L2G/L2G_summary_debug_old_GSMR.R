@@ -403,75 +403,22 @@ colnames(FUSION_feature)=c(paste0("z_FUSION_",colnames(result_z_FUSION)),paste0(
 # 4. loading GSMR results
 # *****************************
 
-# gsmr_pQTL_file="/storage/yangjianLab/guoyazhou/GAMMA_git_data/GSMR/data/gsmr_pQTL.txt"
-# gsmr_pQTL=fread(gsmr_pQTL_file, head=F, stringsAsFactors = F, data.table = F)
-# gsmr_pQTL$gene_name=NA
-# # pQTL_epi_file="/storage/yangjianLab/sharedata/molecular_QTL/pQTL/freeze1/merged_pQTL_plasma/merged_pQTL_plasma_5pQTL.epi"
-# epi=fread(pQTL_epi_file,head=F,stringsAsFactors=F,data.table=F)
+gsmr_pQTL_file="/storage/yangjianLab/guoyazhou/GAMMA_git_data/GSMR/data/gsmr_pQTL.txt"
+gsmr_pQTL=fread(gsmr_pQTL_file, head=F, stringsAsFactors = F, data.table = F)
+gsmr_pQTL$gene_name=NA
+pQTL_epi_file="/storage/yangjianLab/sharedata/molecular_QTL/pQTL/freeze1/merged_pQTL_plasma/merged_pQTL_plasma_5pQTL.epi"
+epi=fread(pQTL_epi_file,head=F,stringsAsFactors=F,data.table=F)
 
-# index=match(gsmr_pQTL$V1, epi$V2, nomatch=0)
-# gsmr_pQTL$gene_name[which(index!=0)]=epi$V5[index]
+index=match(gsmr_pQTL$V1, epi$V2, nomatch=0)
+gsmr_pQTL$gene_name[which(index!=0)]=epi$V5[index]
  
-# # unique(str_split_fixed(gsmr_pQTL[which(is.na(gsmr_pQTL$gene_name)),"V2"],"/",Inf)[,7])
-# index=which(str_split_fixed(gsmr_pQTL$V2,"/",Inf)[,7]=="pQTL_DIRECT")
-# gsmr_pQTL$gene_name[index]=str_split_fixed(gsmr_pQTL$V1[index],"_",Inf)[,1]
-# index=which(str_split_fixed(gsmr_pQTL$V2,"/",Inf)[,7]=="pQTL_NIAGADS")
-# gsmr_pQTL$gene_name[index]=str_split_fixed(gsmr_pQTL$V1[index],"_",Inf)[,2]
-# index=which(str_split_fixed(gsmr_pQTL$V2,"/",Inf)[,7]=="UKB_PPP")
-# gsmr_pQTL$gene_name[index]=str_split_fixed(gsmr_pQTL$V1[index],"_",Inf)[,1]
-
-
-# # ------------------------------------------------
-# # GSMR results -----------------------------------
-# result_GSMR=data.frame()
-# result_GSMR_feature=matrix(NA,nrow=nrow(result),ncol=2)
-
-# GSMR_file=paste0(OUTPUT,"/GSMR/summary/",trait_name,".gsmr")
-
-# if (file.exists(GSMR_file)){
-
-#   data=fread(GSMR_file,head=T,stringsAsFactors=F,data.table=F)
-#   data=data[which(data$bxy!="NaN"),]
-#   # dim(data)
-#   # head(data)
-
-#   index=match(data$Exposure,gsmr_pQTL$V1,nomatch=0)
-#   data$gene_name=data$Exposure
-#   data$gene_name[which(index!=0)]=gsmr_pQTL$gene_name[index]
-
-#   data=data[which(!is.na(data$bxy)),]
-#   maxcpp=data.frame(data %>% group_by(gene_name) %>% filter(p==min(p)))
-
-#   index=match(result$gene_name,maxcpp$gene_name,nomatch=0)
-#   result_GSMR_feature[which(index!=0),1]=maxcpp$bxy[index]/maxcpp$se[index]
-#   result_GSMR_feature[which(index!=0),2]=maxcpp$p[index]
-
-#   result_GSMR=rbind(result_GSMR,maxcpp[index,])
-#   result_GSMR=result_GSMR[,c("Exposure","gene_name","Outcome","bxy","se","p","nsnp","multi_snp_based_heidi_outlier")]
-# }
-
-
-# colnames(result_GSMR_feature)=c("z_GSMR","p_GSMR")
-# rownames(result_GSMR_feature)=result$gene_name
-
-# write.csv(result_GSMR_feature, paste0(OUTPUT,"/L2G/summary/",trait_name, "_GSMR_feature.csv"), row.names = TRUE)
-# write.table(result_GSMR, paste0(OUTPUT,"/L2G/summary/",trait_name, "_GSMR.txt"), row=F,col=T,quo=F,sep="\t")
-
-
-# # GSMR_index<-apply(result_GSMR,1,function(x) all(is.na(x)))
-# # GAMMA_xQTL result ------------------------------------------------------------
-# result$GSMR=NA;
-
-# for(i in 1:nrow(result)){
-#   if(all(is.na(result_GSMR_feature[i,]))){
-#     next
-#   }else{
-#     result$GSMR[i]=result_GSMR_feature[i,2]
-#   }
-# }
-
-# # GAMMA_xQTL feature ------------------------------------------------------------
-# GSMR_feature=result_GSMR_feature
+# unique(str_split_fixed(gsmr_pQTL[which(is.na(gsmr_pQTL$gene_name)),"V2"],"/",Inf)[,7])
+index=which(str_split_fixed(gsmr_pQTL$V2,"/",Inf)[,7]=="pQTL_DIRECT")
+gsmr_pQTL$gene_name[index]=str_split_fixed(gsmr_pQTL$V1[index],"_",Inf)[,1]
+index=which(str_split_fixed(gsmr_pQTL$V2,"/",Inf)[,7]=="pQTL_NIAGADS")
+gsmr_pQTL$gene_name[index]=str_split_fixed(gsmr_pQTL$V1[index],"_",Inf)[,2]
+index=which(str_split_fixed(gsmr_pQTL$V2,"/",Inf)[,7]=="UKB_PPP")
+gsmr_pQTL$gene_name[index]=str_split_fixed(gsmr_pQTL$V1[index],"_",Inf)[,1]
 
 
 # ------------------------------------------------
@@ -479,29 +426,36 @@ colnames(FUSION_feature)=c(paste0("z_FUSION_",colnames(result_z_FUSION)),paste0(
 result_GSMR=data.frame()
 result_GSMR_feature=matrix(NA,nrow=nrow(result),ncol=2)
 
-GSMR_file=paste0(OUTPUT,"/MR/GSMR/results/",trait_name,".gsmr")
+GSMR_file=paste0(OUTPUT,"/GSMR/summary/",trait_name,".gsmr")
 
 if (file.exists(GSMR_file)){
+
   data=fread(GSMR_file,head=T,stringsAsFactors=F,data.table=F)
   data=data[which(data$bxy!="NaN"),]
-  data=data[which(!is.na(data$bxy)),]
+  # dim(data)
+  # head(data)
 
-  maxcpp=data.frame(data %>% group_by(gene_name) %>% filter(pval==min(pval)))
+  index=match(data$Exposure,gsmr_pQTL$V1,nomatch=0)
+  data$gene_name=data$Exposure
+  data$gene_name[which(index!=0)]=gsmr_pQTL$gene_name[index]
+
+  data=data[which(!is.na(data$bxy)),]
+  maxcpp=data.frame(data %>% group_by(gene_name) %>% filter(p==min(p)))
 
   index=match(result$gene_name,maxcpp$gene_name,nomatch=0)
   result_GSMR_feature[which(index!=0),1]=maxcpp$bxy[index]/maxcpp$se[index]
-  result_GSMR_feature[which(index!=0),2]=maxcpp$pval[index]
+  result_GSMR_feature[which(index!=0),2]=maxcpp$p[index]
 
   result_GSMR=rbind(result_GSMR,maxcpp[index,])
-  result_GSMR=result_GSMR[,c("probeID","gene_name","bxy","se","pval","nsnps")]
+  result_GSMR=result_GSMR[,c("Exposure","gene_name","Outcome","bxy","se","p","nsnp","multi_snp_based_heidi_outlier")]
 }
 
 
 colnames(result_GSMR_feature)=c("z_GSMR","p_GSMR")
 rownames(result_GSMR_feature)=result$gene_name
 
-write.csv(result_GSMR_feature, paste0(OUTPUT,"/L2G/summary/",trait_name, "_MR_GSMR_feature.csv"), row.names = TRUE)
-write.table(result_GSMR, paste0(OUTPUT,"/L2G/summary/",trait_name, "_MR_GSMR.txt"), row=F,col=T,quo=F,sep="\t")
+write.csv(result_GSMR_feature, paste0(OUTPUT,"/L2G/summary/",trait_name, "_GSMR_feature.csv"), row.names = TRUE)
+write.table(result_GSMR, paste0(OUTPUT,"/L2G/summary/",trait_name, "_GSMR.txt"), row=F,col=T,quo=F,sep="\t")
 
 
 # GSMR_index<-apply(result_GSMR,1,function(x) all(is.na(x)))
@@ -518,6 +472,52 @@ for(i in 1:nrow(result)){
 
 # GAMMA_xQTL feature ------------------------------------------------------------
 GSMR_feature=result_GSMR_feature
+
+
+# # ------------------------------------------------
+# # GSMR results -----------------------------------
+# result_GSMR=data.frame()
+# result_GSMR_feature=matrix(NA,nrow=nrow(result),ncol=2)
+
+# GSMR_file=paste0(OUTPUT,"/MR/GSMR/results/",trait_name,".gsmr")
+
+# if (file.exists(GSMR_file)){
+#   data=fread(GSMR_file,head=T,stringsAsFactors=F,data.table=F)
+#   data=data[which(data$bxy!="NaN"),]
+#   data=data[which(!is.na(data$bxy)),]
+
+#   maxcpp=data.frame(data %>% group_by(gene_name) %>% filter(pval==min(pval)))
+
+#   index=match(result$gene_name,maxcpp$gene_name,nomatch=0)
+#   result_GSMR_feature[which(index!=0),1]=maxcpp$bxy[index]/maxcpp$se[index]
+#   result_GSMR_feature[which(index!=0),2]=maxcpp$pval[index]
+
+#   result_GSMR=rbind(result_GSMR,maxcpp[index,])
+#   result_GSMR=result_GSMR[,c("probeID","gene_name","bxy","se","pval","nsnps")]
+# }
+
+
+# colnames(result_GSMR_feature)=c("z_GSMR","p_GSMR")
+# rownames(result_GSMR_feature)=result$gene_name
+
+# write.csv(result_GSMR_feature, paste0(OUTPUT,"/L2G/summary/",trait_name, "_MR_GSMR_feature.csv"), row.names = TRUE)
+# write.table(result_GSMR, paste0(OUTPUT,"/L2G/summary/",trait_name, "_MR_GSMR.txt"), row=F,col=T,quo=F,sep="\t")
+
+
+# # GSMR_index<-apply(result_GSMR,1,function(x) all(is.na(x)))
+# # GAMMA_xQTL result ------------------------------------------------------------
+# result$GSMR=NA;
+
+# for(i in 1:nrow(result)){
+#   if(all(is.na(result_GSMR_feature[i,]))){
+#     next
+#   }else{
+#     result$GSMR[i]=result_GSMR_feature[i,2]
+#   }
+# }
+
+# # GAMMA_xQTL feature ------------------------------------------------------------
+# GSMR_feature=result_GSMR_feature
 
 
 
@@ -581,13 +581,6 @@ result1[,13]=ifelse(result$mMAGIC < 0.05/length(which(!is.na(result$mMAGIC))), 1
 result1[,14]=ifelse(result$caMAGIC < 0.05/length(which(!is.na(result$caMAGIC))), 1, 0)
 result1[,15]=ifelse(result$hMAGIC < 0.05/length(which(!is.na(result$hMAGIC))), 1, 0)
 
-colnames(result1)=c("GAMMA_eSMR","GAMMA_sSMR","GAMMA_pSMR",
-                    "GAMMA_eCOLOC","GAMMA_sCOLOC","GAMMA_pCOLOC",
-                    "GAMMA_FUSION",
-                    "GAMMA_GSMR",
-                    "GAMMA_MAGIC","GAMMA_eMAGIC", "GAMMA_sMAGIC", "GAMMA_pMAGIC", "GAMMA_mMAGIC", "GAMMA_caMAGIC", "GAMMA_hMAGIC")
-result=cbind(result,result1)
-
 result$GAMMA_xQTL=apply(result1,1,function(x) sum(x,na.rm=T))
 feature=result[,c("Gene_ID","gene_id","gene_name","chr", "start","end","strand","GWAS_LOCUS","Lead_SNP","Lead_SNP_BP",
                   "GAMMA_xQTL",
@@ -612,13 +605,7 @@ GAMMA_xQTL_name_list=c(## Gene information
 	"eSMR_QTL_name","sSMR_QTL_name","pSMR_QTL_name", "eCOLOC_QTL_name", "sCOLOC_QTL_name", "pCOLOC_QTL_name","FUSION_QTL_name",
   "eMAGIC_QTL_name", "sMAGIC_QTL_name", "pMAGIC_QTL_name", "mMAGIC_QTL_name", "caMAGIC_QTL_name", "hMAGIC_QTL_name", 
   "eSMR_p_HEIDI","sSMR_p_HEIDI","pSMR_p_HEIDI","eSMR_probeID","sSMR_probeID","pSMR_probeID","eCOLOC_probeID","sCOLOC_probeID","pCOLOC_probeID","FUSION_probeID",
-  "eMAGIC_probeID", "sMAGIC_probeID", "pMAGIC_probeID", "mMAGIC_probeID",  "caMAGIC_probeID", "hMAGIC_probeID",
-  ## GAMMA specific score
-  "GAMMA_eSMR","GAMMA_sSMR","GAMMA_pSMR",
-  "GAMMA_eCOLOC","GAMMA_sCOLOC","GAMMA_pCOLOC",
-  "GAMMA_FUSION",
-  "GAMMA_GSMR",
-  "GAMMA_MAGIC","GAMMA_eMAGIC", "GAMMA_sMAGIC", "GAMMA_pMAGIC", "GAMMA_mMAGIC", "GAMMA_caMAGIC", "GAMMA_hMAGIC")
+  "eMAGIC_probeID", "sMAGIC_probeID", "pMAGIC_probeID", "mMAGIC_probeID",  "caMAGIC_probeID", "hMAGIC_probeID")
 
 write.table(result[,..GAMMA_xQTL_name_list],paste0(OUTPUT,"/L2G/score/",trait_name,"_GAMMA_xQTL.summary"),row=F,col=T,quo=F,sep="\t")
 write.table(feature, paste0(OUTPUT,"/L2G/feature/",trait_name,"_GAMMA_xQTL.feature"),row=F,col=T,quo=F,sep="\t")

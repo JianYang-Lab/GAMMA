@@ -46,6 +46,7 @@ copy_directory $OUTPUT/V2G/plot $REPORT/V2G/plot
 copy_directory $OUTPUT/Wu_adj/summary $REPORT/Wu_adj/summary
 
 # L2G
+copy_directory $OUTPUT/MAGIC/summary $REPORT/MAGIC/summary
 copy_directory $OUTPUT/L2G/summary $REPORT/L2G/summary
 
 # Network

@@ -1,6 +1,7 @@
 # Input
 input:
   trait: "T2D"
+  mesh_id: "D003924"
   gwas: "/opt/workflow/data/sharedata/GWAS_summary/01_Public/01_cojo/DIAMANTE_EUR_T2D_2022_NG.txt"
   output: "/opt/workflow/data/guoyazhou/GAMMA_git_data"
   report_dir: ""
@@ -13,7 +14,7 @@ environment:
   python_rwr_ppr: "NetworkX"
   python_ldsc: "ldsc"
   post_smr: "depict"
-  python_ml: "py39"
+  python_ml: "py39" # TODO
   
 script:
   work_path: "/opt/workflow/logs"
@@ -122,7 +123,7 @@ rwr_ppr:
 
 gamma:
   pharmaprojects: "/opt/workflow/data/guoyazhou/GAMMA_git/clinical_success_rate/Pharmaprojects_Nelson_2022.txt"
-  pharmaprojects_0507_shufeng: "/opt/workflow/data/sunshufeng/gamma_v4/data/pharmap_processed.csv"
+  pharmaprojects_0507_shufeng: "/opt/workflow/data/sunshufeng/gamma_v7/data/pharmap_processed.csv"
 
 mesh:
   gwas_mesh: "/opt/workflow/data/guoyazhou/data/Drug_data/Pharmaprojects/Pharmaprojects_2023_10_15/ontology_similarity/similarity_matrix/GWAS_trait_list.csv"
@@ -130,9 +131,10 @@ mesh:
 model_data:
   omim: "/opt/workflow/data/sunshufeng/gamma_v4/data/OMIM_processed.csv"
   clinvar: "/opt/workflow/data/sunshufeng/gamma_v4/data/clinvar.csv"
-  mgi: "/opt/workflow/data/sunshufeng/gamma_v4/data/MGI_processed.csv"
-  gene_features: "/opt/workflow/data/sunshufeng/gamma_v4/0.0.3_gene_features.csv"
+  mgi: "/opt/workflow/data/sunshufeng/gamma_v4/data/MGI_processed2.csv"
+  gene_features: "/opt/workflow/data/sunshufeng/gamma_v7/0.0.3_gene_features.csv"
+  uniprot: "/opt/workflow/data/sunshufeng/gamma_v7/0.0.5_uniprot_protein_family.csv"
 
 model_model:
-  model: "/opt/workflow/data/sunshufeng/gamma_v4/0.0.1_valid_feature_model.joblib"
-  feature: "/opt/workflow/data/sunshufeng/gamma_v4/0.0.2_feature_list.txt"
+  model: "/opt/workflow/data/sunshufeng/gamma_v7/0.0.1_model.pth"
+  scaler: "/opt/workflow/data/sunshufeng/gamma_v7/0.0.2_scaler.pkl"
