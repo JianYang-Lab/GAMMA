@@ -1,0 +1,11 @@
+name: NetworkX
+channels:
+- bioconda
+dependencies:
+- python=3.8
+- pip
+- pip:
+  - pandas
+  - networkx
+  - numpy
+  - matplotlib

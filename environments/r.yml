@@ -1,0 +1,39 @@
+name: r
+channels:
+  - bioconda
+  - conda-forge
+  - dnachun
+  - defaults
+dependencies:
+  - mkl
+  - r-base=4.3.1
+  - r-essentials
+  - r-biocmanager
+  - r-data.table
+  - r-stringr
+  - r-dplyr
+  - r-r.utils
+  - r-devtools
+  - r-tidyverse
+  - r-glmnet
+  - r-rcpparmadillo
+  - r-rcppgsl
+  - bioconductor-genomeinfodb
+  - bioconductor-iranges
+  - bioconductor-s4vectors
+  - r-knitr
+  - r-rmarkdown
+  - bioconductor-genomicranges
+  - bioconductor-regioner
+  - bioconductor-repitools
+  - r-optparse
+  - r-coloc
+  - bioconductor-qvalue
+  - r-mgcv
+  - r-survey
+  - r-ncmisc
+  - r-mendelianRandomization
+  - r-mrmix
+  - r-mrpresso
+  - r-penalized
+  - r-mr.raps

@@ -57,31 +57,42 @@ To ensure the security of your data, you must log in to submit your GWAS summary
 # Contact
 Should you have any questions, suggestions, or encounter any issues, please reach out to us at Yang Lab (statgenlab@westlake.edu.cn) or Jian Yang (jian.yang@westlake.edu.cn).
 
-We have provided the detail script for each analysis, please see [scripts](scripts/). And for the GAMMA pipeline, we provided the slurm cluster [sbatch script](deploy/HPC/GAMMA/GAMMA_sbatch.sh)  and dependent files in the [yaml files](deploy/HPC/GAMMA/GAMMA.yaml).
+We have provided the detail script for each analysis, please see [scripts](scripts/). And for the GAMMA pipeline, we provided the slurm cluster [sbatch script](deploy/GAMMA_sbatch.sh)  and dependent files in the [yaml files](deploy/GAMMA.yaml).
 
 But we would like to recommend you to utilize our online [GAMMA portal](https://gamma.westlakefuturegene.com/), which has already fix the dependent data, packages, and environment. You just need to prepare a GWAS summary statistics there.
 
 
 # Tutorial
-We provide scripts for each analysis in the [scripts](scripts/) directory for researcher reference. For the full GAMMA pipeline on a Slurm cluster, see the sbatch script at [deploy/HPC/GAMMA/GAMMA_sbatch.sh](deploy/HPC/GAMMA/GAMMA_sbatch.sh) and its YAML config at [deploy/HPC/GAMMA/GAMMA.yaml](deploy/HPC/GAMMA/GAMMA.yaml).
+We provide scripts for each analysis in the [scripts](scripts/) directory for researcher reference. For the full GAMMA pipeline on a Slurm cluster, see the sbatch script at [deploy/GAMMA_sbatch.sh](deploy/GAMMA_sbatch.sh) and its YAML config at [deploy/GAMMA.yaml](deploy/GAMMA.yaml).
 
 
 > <font color="red"><strong>Recommendation:</strong></font> The easiest way to run GAMMA is via the online **[GAMMA Portal](https://gamma.westlakefuturegene.com/)** (https://gamma.westlakefuturegene.com/), which has already fix all the dependent data, packages, and environment. You only need to upload your GWAS summary statistics.
 
+**Setup environment**
+```
+conda env create -f /environments/depict.yml && \
+    conda env create -f /environments/pops.yml && \
+    conda env create -f /environments/ldsc.yml && \
+    conda env create -f /environments/NetworkX.yml && \
+    conda env create -f /environments/py37.yml && \
+    conda env create -f /environments/py39.yml
+```
 
 **Run Pipeline**
 ```bash
 ## Input
+GAMMA_HOME=/your/local/path
+
 CONFIG_template=$1
 trait_name=$2
 GWAS_DATA=$3
-WORK_DIR=${4:-"/storage/yangjianLab/guoyazhou/GAMMA_git"}
-OUTPUT=${5:-"/storage/yangjianLab/guoyazhou/GAMMA_git_data"}
-SCRIPT_DIR=${6:-"/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts"}
+WORK_DIR=${4:-"${GAMMA_HOME}/guoyazhou/GAMMA_git"}
+OUTPUT=${5:-"${GAMMA_HOME}/guoyazhou/GAMMA_git_data"}
+SCRIPT_DIR=${6:-"${GAMMA_HOME}/guoyazhou/GAMMA_github/gamma-script/scripts"}
 
 ## Config yaml file for each GWAS summary data
 ./scripts/config.sh \
-    ./deploy/HPC/GAMMA/GAMMA.yaml \
+    ./deploy/GAMMA.yaml \
     ${trait_name} \
     ${GWAS_DATA} \
     ${WORK_DIR} \
