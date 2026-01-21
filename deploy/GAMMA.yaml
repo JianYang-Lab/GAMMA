@@ -18,7 +18,7 @@ environment:
   python_rwr_ppr: "NetworkX"
   python_ldsc: "ldsc"
   post_smr: "depict"
-  python_ml: "py39" # TODO
+  python_ml: "py39"
 software:
   plink1_9: "${GAMMA_HOME}/guoyazhou/software/plink/plink1.90beta/plink_1.90_beta"
   plink2: "${GAMMA_HOME}/guoyazhou/software/plink/plink2.00alpha/plink2"
