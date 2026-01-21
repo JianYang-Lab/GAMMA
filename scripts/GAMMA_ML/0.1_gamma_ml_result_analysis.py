@@ -29,16 +29,6 @@ uniprot_path = args.uniprot_path
 pharmap_path = args.pharmap_path
 
 # %%
-# gamma_path = '/storage/yangjianLab/guoyazhou/GAMMA_git_data/GAMMA/feature/T2D_GAMMA.feature'
-# mesh_id = 'D003924'
-# out_path = '/storage/yangjianLab/sunshufeng/gamma_v7/0.0.4_tmp_test_out.csv'
-# omim_path = '/storage/yangjianLab/sunshufeng/gamma_v4/data/OMIM_processed.csv'
-# clinvar_path = '/storage/yangjianLab/sunshufeng/gamma_v4/data/clinvar.csv'
-# mgi_path = '/storage/yangjianLab/sunshufeng/gamma_v4/data/MGI_processed2.csv'
-# gene_feature_path = '/storage/yangjianLab/sunshufeng/gamma_v7/0.0.3_gene_features.csv'
-# uniprot_path = '/storage/yangjianLab/sunshufeng/gamma_v7/0.0.5_uniprot_protein_family.csv'
-# pharmap_path = '/storage/yangjianLab/sunshufeng/gamma_v4/data/pharmap_processed.csv'
-
 # get dir of out_path
 out_dir = os.path.dirname(out_path)
 os.makedirs(os.path.join(out_dir, 'gene_relations'), exist_ok=True)
@@ -56,23 +46,6 @@ dummy_family = pd.read_csv(uniprot_path)
 pharmap = pd.read_csv(pharmap_path)
 
 clinvar = clinvar.rename(columns={'clinvar_MeSH_id': 'MeSH_id', 'clinvar_Ensembl':'gene_id'})
-
-# %%
-# p_family = pd.read_csv('/storage/yangjianLab/sunshufeng/data/uniprotkb_AND_model_organism_9606_2025_12_15.tsv', sep='\t')
-
-# entry_enst = pd.read_csv('/storage/yangjianLab/sunshufeng/protScore/gencode_SwissProt_meta_v43', sep='\t', names=['enst', 'Entry', 'entry_more'])
-# entry_enst.loc[:, 'transcript_stable_id'] = entry_enst['enst'].str.replace('\.[0-9]+$', '', regex=True)
-# enst_ensg = pd.read_csv('/storage/yangjianLab/sunshufeng/data/Homo_sapiens.GRCh38.111.ena.tsv', sep='\t')
-# entry_enst_ensg = entry_enst.merge(enst_ensg[['gene_stable_id', 'transcript_stable_id']].drop_duplicates(), how='left')
-
-# p_family = p_family.merge(entry_enst_ensg[['Entry', 'gene_stable_id']].drop_duplicates(), how='inner')
-
-# p_family['Protein families'] = 'uniprot_family_'+p_family['Protein families'].astype(str)
-# p_family = p_family[['gene_stable_id', 'Protein families']].rename(columns={'gene_stable_id':'gene_id'})
-
-# dummy_fam = pd.get_dummies(p_family['Protein families'])
-# dummy_fam['gene_id'] = p_family.gene_id
-# dummy_fam = dummy_fam.groupby('gene_id').sum()
 
 # %%
 top_genes = df_output.sort_values(by='yhat_approve', ascending=False).reset_index(drop=True).iloc[:100]

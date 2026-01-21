@@ -12,7 +12,6 @@ gene_features=`yq .model_data.gene_features "${CONFIG}"`
 uniprot_path=`yq .model_data.uniprot "${CONFIG}"`
 trait_name=`yq .input.trait "${CONFIG}"`
 SCRIPT_DIR=`yq .script.path "${CONFIG}"`
-# MESH_ID=D003924  # TODO
 MESH_ID=`yq .input.mesh_id "${CONFIG}"`
 pharmap_path=`yq .gamma.pharmaprojects_0507_shufeng "${CONFIG}"`
 model_path=`yq .model_model.model "${CONFIG}"`

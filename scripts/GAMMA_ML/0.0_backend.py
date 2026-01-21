@@ -36,18 +36,6 @@ gene_feature_path = args.gene_features
 pharmap_path = args.pharmap_path
 
 # %%
-# gamma_path = '/storage/yangjianLab/guoyazhou/GAMMA_git_data/GAMMA/feature/T2D_GAMMA.feature'
-# mesh_id = 'D003924'
-# out_path = '/storage/yangjianLab/sunshufeng/gamma_v7/0.0.4_tmp_test_out.csv'
-# omim_path = '/storage/yangjianLab/sunshufeng/gamma_v4/data/OMIM_processed.csv'
-# clinvar_path = '/storage/yangjianLab/sunshufeng/gamma_v4/data/clinvar.csv'
-# mgi_path = '/storage/yangjianLab/sunshufeng/gamma_v4/data/MGI_processed2.csv'
-# gene_feature_path = '/storage/yangjianLab/sunshufeng/gamma_v7/0.0.3_gene_features.csv'
-# model_path = '/storage/yangjianLab/sunshufeng/gamma_v7/0.0.1_model.pth'
-# scaler_path = '/storage/yangjianLab/sunshufeng/gamma_v7/0.0.2_scaler.pkl'
-# pharmap_path = '/storage/yangjianLab/sunshufeng/gamma_v4/data/pharmap_processed.csv'
-
-# %%
 # Device configuration
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(f'Predicting on: {DEVICE}')
