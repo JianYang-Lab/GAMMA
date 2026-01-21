@@ -537,3 +537,19 @@ echo "GAMMA analsis: $GAMMA_jid"
 
 
 
+GAMMA_ML_jid=$(/opt/slurm/bin/sbatch --parsable \
+  -d afterok:${GAMMA_jid} \
+  -J GAMMA_ML_analysis \
+  -c 2 \
+  -p intel-sc3,amd-ep2,amd-ep2-short \
+  -q normal \
+  -a 1 \
+  --ntasks-per-node 1 \
+  --mem 10G \
+  -o ./out_log/GAMMA/${trait_name}_gamma_ml_%A_%a_out.txt \
+  -e ./error_log/GAMMA/${trait_name}_gamma_ml_%A_%a_error.txt \
+  ${SCRIPT_DIR}/GAMMA_ML/GAMMA_ML.sh ${CONFIG})
+
+echo "GAMMA ML analsis: $GAMMA_ML_jid"
+
+

@@ -68,7 +68,7 @@ We provide scripts for each analysis in the [scripts](scripts/) directory for re
 
 > <font color="red"><strong>Recommendation:</strong></font> The easiest way to run GAMMA is via the online **[GAMMA Portal](https://gamma.westlakefuturegene.com/)** (https://gamma.westlakefuturegene.com/), which has already fix all the dependent data, packages, and environment. You only need to upload your GWAS summary statistics.
 
-**Setup environment**
+**Setup environments**
 ```
 conda env create -f /environments/depict.yml && \
     conda env create -f /environments/pops.yml && \
@@ -83,7 +83,7 @@ conda env create -f /environments/r.yml && \
     R -e 'remotes::install_github(\"cotsapaslab/jlim\", subdir=\"jlimR\", ref=\"master\")'"
 ```
 
-**Run Pipeline**
+**Run pipeline**
 ```bash
 ## Input
 GAMMA_HOME=/your/local/path
@@ -109,7 +109,7 @@ SCRIPT_DIR=${6:-"${GAMMA_HOME}/guoyazhou/GAMMA_github/gamma-script/scripts"}
 
 ## Launch the GAMMA pipeline via Slurm
 CONFIG=${WORK_DIR}/yaml_file/${trait_name}.yaml 
-./deploy/HPC/GAMMAGAMMA_sbatch.sh ${CONFIG}
+./deploy/GAMMA_sbatch.sh ${CONFIG}
 ```
 
 
