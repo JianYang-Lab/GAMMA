@@ -5,11 +5,14 @@ GAMMA Portal is a comprehensive web-based platform designed for post-GWAS gene p
 
 
 # Online GAMMA Analysis
-The online GAMMA analysis (https://gamma.westlakefuturegene.com/) streamlines the gene prioritization process so that users only need to provide GWAS summary statistics for their trait of interest. Please see the GWAS summary statistics input tutorial (https://gamma.westlakefuturegene.com/doc/tutorial).
+The online GAMMA analysis (https://gamma.westlakefuturegene.com/) streamlines the gene prioritization process so that users only need to provide GWAS summary statistics for their trait of interest. Please see the tutorial for GWAS summary statistics input format (https://gamma.westlakefuturegene.com/doc/tutorial).
+
+> Test account:  gamma@test.com
+> Test account password: Test1234
+
 
 ```
-Test account: gamma@test.com
-Test account password: Test1234
+
 ```
 
 #### The platform implements the following methodological components:
@@ -57,16 +60,19 @@ To ensure the security of your data, you must log in to submit your GWAS summary
 # Contact
 Should you have any questions, suggestions, or encounter any issues, please reach out to us at Yang Lab (statgenlab@westlake.edu.cn) or Jian Yang (jian.yang@westlake.edu.cn).
 
+We have provided the detail script for each analysis, please see [scripts](scripts/). And for the GAMMA pipeline, we provided the slurm cluster [sbatch script](deploy/HPC/GAMMA/GAMMA_sbatch.sh)  and dependent files in the [yaml files](deploy/HPC/GAMMA/GAMMA.yaml).
+
+But we would like to recommend you to utilize our online [GAMMA portal](https://gamma.westlakefuturegene.com/), which has already fix the dependent data, packages, and environment. You just need to prepare a GWAS summary statistics there.
 
 
+# Tutorial
+We provide scripts for each analysis in the [`scripts/`](scripts/) directory for researcher reference. For the full GAMMA pipeline on a Slurm cluster, see the sbatch script at [`deploy/HPC/GAMMA/GAMMA_sbatch.sh`](deploy/HPC/GAMMA/GAMMA_sbatch.sh) and its YAML config at [`deploy/HPC/GAMMA/GAMMA.yaml`](deploy/HPC/GAMMA/GAMMA.yaml).
 
 
+> <font color="red"><strong>Recommendation:</strong></font> The easiest way to run GAMMA is via the online **[GAMMA Portal](https://gamma.westlakefuturegene.com/)** (https://gamma.westlakefuturegene.com/), which has already fix all the dependent data, packages, and environment. You only need to upload your GWAS summary statistics.
 
 
-
-
-
-
+```bash
 ## Input
 CONFIG_template=$1
 trait_name=$2
@@ -75,22 +81,22 @@ WORK_DIR=${4:-"/storage/yangjianLab/guoyazhou/GAMMA_git"}
 OUTPUT=${5:-"/storage/yangjianLab/guoyazhou/GAMMA_git_data"}
 SCRIPT_DIR=${6:-"/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/scripts"}
 
-
-
-
-
-## Config first
+## Config yaml file for each GWAS summary data
 ./scripts/config.sh \
-    ./deploy/HPC/template.yaml \
+    ./deploy/HPC/GAMMA/GAMMA.yaml \
     ${trait_name} \
     ${GWAS_DATA} \
     ${WORK_DIR} \
     ${OUTPUT} \
     ${SCRIPT_DIR}
 
-## Check GWAS data 
+## Validate/format GWAS data
 ./scripts/gwas_format.sh ${CONFIG}
 
-## GAMMA pipeline
+## Launch the GAMMA pipeline via Slurm
 CONFIG=${WORK_DIR}/yaml_file/${trait_name}.yaml 
-./deploy/HPC/GAMMA_sbatch.sh ${CONFIG}
+./deploy/HPC/GAMMAGAMMA_sbatch.sh ${CONFIG}
+```
+
+
+
