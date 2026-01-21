@@ -1,4 +1,4 @@
-# GAMMA Portal
+# Genetic Associations to Mechanisms and Medicine Analysis
 **GAMMA Portal** is a comprehensive web-based platform designed for post-GWAS gene prioritization, drug target discovery, and predict their clinical success rates through systematic analysis of genome-wide association study (GWAS) summary statistics. **GAMMA** (Genetic Associations to Mechanisms and Medicine Analysis) implements a comprehensive suite of gene prioritization methods spanning four levels of genetic evidence: variant-level, gene-level, locus-level, and gene network-level analyses. The machine learning extension **GAMMA-ML** integrates multiple lines of genetic evidence from GAMMA and comprehensive gene-self characteristics to identify genes most likely to be valid therapeutic targets and predicts their probability of success in clinical development.
 
 ![GAMMA_figure](figure/GAMMA.png)
