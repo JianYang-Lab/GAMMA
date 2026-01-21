@@ -2,22 +2,22 @@
 
 # for i in `seq 1 245`
 # do
-# trait_name=`head -n $i /storage/yangjianLab/guoyazhou/GAMMA_git/GWAS_trait_list/GWAS_latest_list.txt | tail -n1 | cut -f1`
-# GWAS_DATA=`head -n $i /storage/yangjianLab/guoyazhou/GAMMA_git/GWAS_trait_list/GWAS_latest_list.txt | tail -n1 | cut -f2`
-# CONFIG="/storage/yangjianLab/guoyazhou/GAMMA_git/yaml_file/${trait_name}.yaml"
+# trait_name=`head -n $i ${GAMMA_HOME}/guoyazhou/GAMMA_git/GWAS_trait_list/GWAS_latest_list.txt | tail -n1 | cut -f1`
+# GWAS_DATA=`head -n $i ${GAMMA_HOME}/guoyazhou/GAMMA_git/GWAS_trait_list/GWAS_latest_list.txt | tail -n1 | cut -f2`
+# CONFIG="${GAMMA_HOME}/guoyazhou/GAMMA_git/yaml_file/${trait_name}.yaml"
 # echo $i;echo $trait_name; echo $GWAS_DATA; echo $CONFIG
-# /storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/hpc_update_config.sh ${CONFIG} ${trait_name} ${GWAS_DATA}
+# ${GAMMA_HOME}/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/hpc_update_config.sh ${CONFIG} ${trait_name} ${GWAS_DATA}
 # done
 
-# cat /storage/yangjianLab/guoyazhou/GAMMA_git_data/SMR/supplementary_file/SMR_Portal_GWAS_list_new.txt | while read line
+# cat ${GAMMA_HOME}/guoyazhou/GAMMA_git_data/SMR/supplementary_file/SMR_Portal_GWAS_list_new.txt | while read line
 # do
 # trait_name=`echo $line | cut -f 1`
 # GWAS_DATA=`echo $line | cut -f 2`
 # echo $trait_name
-# /storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/hpc_update_config.sh   /storage/yangjianLab/guoyazhou/GAMMA_git/yaml_file/${trait_name}.yaml ${trait_name} ${GWAS_DATA}
+# ${GAMMA_HOME}/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/hpc_update_config.sh   ${GAMMA_HOME}/guoyazhou/GAMMA_git/yaml_file/${trait_name}.yaml ${trait_name} ${GWAS_DATA}
 # done
 
-# ls /storage/yangjianLab/guoyazhou/GAMMA_git/yaml_file/*yaml | while read line
+# ls ${GAMMA_HOME}/guoyazhou/GAMMA_git/yaml_file/*yaml | while read line
 # do
 # CONFIG=${line}
 # trait_name=`yq .input.trait "${CONFIG}"`
@@ -26,7 +26,7 @@
 # echo $trait_name
 # echo $GWAS_DATA
 
-# /storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/hpc_update_config.sh ${CONFIG} ${trait_name} ${GWAS_DATA}
+# ${GAMMA_HOME}/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/hpc_update_config.sh ${CONFIG} ${trait_name} ${GWAS_DATA}
 
 # done
 
@@ -42,7 +42,7 @@ GWAS_DATA=$3
 # WORK_DIR=`yq .script.work_path "${CONFIG}"`
 
 # CONFIG_template=`yq .yaml.template "${CONFIG_template}"`
-CONFIG_template="/storage/yangjianLab/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/GAMMA/template.yaml"
+CONFIG_template="${GAMMA_HOME}/guoyazhou/GAMMA_github/gamma-script/deploy/HPC/GAMMA/template.yaml"
 
 cp ${CONFIG_template} ${CONFIG}
 
